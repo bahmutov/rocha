@@ -1,0 +1,36 @@
+{
+  "name": "mocha-test-order",
+  "version": "1.0.0",
+  "description": "Runs Mocha unit tests but randomizes their order",
+  "main": "index.js",
+  "dependencies": {
+    "lodash.shuffle": "3.1.0",
+    "mocha": "2.3.4"
+  },
+  "devDependencies": {
+    "mocha": "2.3.4"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahmutov/random-mocha.git"
+  },
+  "keywords": [
+    "mocha",
+    "cli",
+    "unit",
+    "test",
+    "testing",
+    "random",
+    "randomize",
+    "shuffle"
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bahmutov/random-mocha/issues"
+  },
+  "homepage": "https://github.com/bahmutov/random-mocha#readme"
+}
