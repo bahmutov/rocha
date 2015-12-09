@@ -8,7 +8,8 @@
     "mocha": "2.3.4"
   },
   "scripts": {
-    "test": "node index.js spec/spec.js"
+    "test": "node index.js spec/spec.js",
+    "mocha": "mocha spec/spec.js"
   },
   "repository": {
     "type": "git",
