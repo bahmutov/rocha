@@ -1,3 +1,4 @@
+/* global describe, it */
 describe('example', function () {
   var foo
   it('runs test 1', function () {

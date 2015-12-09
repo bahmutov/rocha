@@ -2,6 +2,8 @@
 
 > Runs Mocha unit tests but randomizes their order
 
+[![standard style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+
 ## Example
 
 The tests in [spec/spec.js](spec/spec.js) always pass in Mocha, 
