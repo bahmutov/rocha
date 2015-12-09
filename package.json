@@ -1,5 +1,5 @@
 {
-  "name": "mocha-test-order",
+  "name": "random-mocha",
   "version": "1.0.0",
   "description": "Runs Mocha unit tests but randomizes their order",
   "main": "index.js",
