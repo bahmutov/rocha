@@ -45,8 +45,8 @@
     "pre-git": {
       "commit-msg": "simple",
       "pre-commit": [
-        "npm run mocha",
-        "npm test"
+        "npm run lint",
+        "npm run mocha"
       ],
       "pre-push": [],
       "post-commit": [],
