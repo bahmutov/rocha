@@ -1,6 +1,5 @@
 {
   "name": "rocha",
-  "version": "1.0.0",
   "description": "Runs Mocha unit tests but randomizes their order",
   "main": "index.js",
   "bin": {
@@ -16,11 +15,12 @@
     "mocha": "mocha spec/spec.js",
     "lint": "standard bin/*.js *.js spec/*.js",
     "commit": "commit-wizard",
-    "issues": "git-issues"
+    "issues": "git-issues",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bahmutov/rocha.git"
+    "url": "https://github.com/bahmutov/rocha.git"
   },
   "keywords": [
     "mocha",
@@ -41,7 +41,8 @@
   "devDependencies": {
     "git-issues": "1.2.0",
     "pre-git": "3.0.0",
-    "standard": "5.4.1"
+    "standard": "5.4.1",
+    "semantic-release": "^4.3.5"
   },
   "config": {
     "pre-git": {
