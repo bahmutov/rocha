@@ -12,6 +12,25 @@ function shuffleTests (suite) {
   suite.suites.forEach(shuffleTests)
 }
 
+function testOrder (suite) {
+  return [{
+    title: suite.fullTitle(),
+    tests: suite.tests.map(t => t.title),
+    suites: suite.suites.map(testOrder)
+  }]
+}
+
+const join = require('path').join
+const filename = join(process.cwd(), '.rocha.json')
+
+function saveOrder (suite) {
+  const order = testOrder(suite)
+  const json = JSON.stringify(order, null, 2)
+  const save = require('fs').writeFileSync
+  save(filename, json)
+  log('saved order to file', filename)
+}
+
 function rocha (options) {
   options = options || {}
 
@@ -29,6 +48,7 @@ function rocha (options) {
 
   mocha.suite.beforeAll(function () {
     shuffleTests(mocha.suite)
+    saveOrder(mocha.suite)
   })
 
   mocha.run(function (failures) {

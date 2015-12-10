@@ -1,4 +1,4 @@
-# rocha (aka random mocha)
+# rocha (aka "ROKKA" the Random Mocha)
 
 > Runs Mocha unit tests but randomizes their order
 
@@ -58,10 +58,42 @@ can break the tests for no obvious reason. A pain to find the problem too.
       1) example runs test 3:
           AssertionError: foo is 42 undefined
 
+Rocha takes each suite and shuffles its list of unit tests. Given enough test runs this should
+make visible the problems due to shared data, or polluted environment, or even poor understanding of
+JavaScript [concurrency](http://glebbahmutov.com/blog/concurrency-can-bite-you-even-in-node/).
+
+## Notes
+
 Not every random order will be
 
 - so random that it is different from sequential
 - enough to flush out every problem
+
+## Recreating the failed order
+
+If the unit tests fail, **the executed order is saved** in JSON file `.rocha.json`.
+For the included example `rocha spec/*-spec.js` it will be something like this
+
+    [{
+      "title": "fixed example",
+      "tests": [
+        "runs test 1",
+        "runs test 2",
+        "runs test 3"
+      ]
+    }, {
+      "title": "tricky example",
+      "tests": [
+        "runs test 1",
+        "runs test 3",
+        "runs test 2"
+      ]
+    }]
+
+When you start `rocha` again, it will find this file and will reorder the tests
+**in the same order**, recreating the failure again.
+
+If the tests pass, the `.rocha.json` file is deleted, thus the next run will be random again.
 
 ## How should we test?
 
