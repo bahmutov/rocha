@@ -12,6 +12,12 @@
 [![manpm](https://img.shields.io/badge/manpm-%E2%9C%93-3399ff.svg)](https://github.com/bahmutov/manpm)
 [![standard style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
+## Demo screencast
+
+[![asciicast](https://asciinema.org/a/31549.png)](https://asciinema.org/a/31549)
+
+In this demo I am showing how Rocha can find ordering problems in the tests (see the example below).
+
 ## Example
 
 The tests in [spec/tricky-spec.js](spec/tricky-spec.js) always pass in Mocha,
