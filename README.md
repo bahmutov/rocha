@@ -1,4 +1,4 @@
-# random-mocha
+# rocha (aka random mocha)
 
 > Runs Mocha unit tests but randomizes their order
 
@@ -6,7 +6,7 @@
 
 ## Example
 
-The tests in [spec/spec.js](spec/spec.js) always pass in Mocha, 
+The tests in [spec/spec.js](spec/spec.js) always pass in Mocha,
 but only because their execution order is 1 - 2 - 3.
 
 ```js
@@ -23,7 +23,7 @@ describe('example', function () {
 })
 ```
 
-### Running using Mocha in order
+### Running tests using Mocha
 
     > mocha spec/spec.js
       example
@@ -33,7 +33,7 @@ describe('example', function () {
         ✓ runs test 3
       3 passing (8ms)
 
-### Running using random-mocha
+### Running tests using rocha
 
     shuffling 3 unit tests in "example"
       example

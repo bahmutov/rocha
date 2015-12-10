@@ -1,25 +1,26 @@
 {
-  "name": "random-mocha",
+  "name": "rocha",
   "version": "1.0.0",
   "description": "Runs Mocha unit tests but randomizes their order",
   "main": "index.js",
   "bin": {
-    "random": "bin/random-mocha.js",
-    "random-mocha": "bin/random-mocha.js"
+    "rocha": "bin/rocha.js"
   },
   "dependencies": {
     "lodash.shuffle": "3.1.0",
-    "mocha": "2.3.4"
+    "mocha": "2.3.4",
+    "simple-bin-help": "1.5.0"
   },
   "scripts": {
     "random": "node index.js spec/spec.js",
     "mocha": "mocha spec/spec.js",
     "lint": "standard bin/*.js *.js spec/*.js",
-    "commit": "commit-wizard"
+    "commit": "commit-wizard",
+    "issues": "git-issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bahmutov/random-mocha.git"
+    "url": "git+https://github.com/bahmutov/rocha.git"
   },
   "keywords": [
     "mocha",
@@ -34,10 +35,11 @@
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bahmutov/random-mocha/issues"
+    "url": "https://github.com/bahmutov/rocha/issues"
   },
-  "homepage": "https://github.com/bahmutov/random-mocha#readme",
+  "homepage": "https://github.com/bahmutov/rocha#readme",
   "devDependencies": {
+    "git-issues": "1.2.0",
     "pre-git": "3.0.0",
     "standard": "5.4.1"
   },
