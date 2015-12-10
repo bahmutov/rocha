@@ -57,7 +57,9 @@
         "npm run lint",
         "npm run mocha"
       ],
-      "pre-push": [],
+      "pre-push": [
+        "npm run size"
+      ],
       "post-commit": [],
       "post-merge": []
     }
