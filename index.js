@@ -5,6 +5,7 @@ const log = require('debug')('rocha')
 const la = require('lazy-ass')
 const check = require('check-more-types')
 const chalk = require('chalk')
+const exists = require('fs').existsSync
 
 function shuffleTests (suite) {
   if (suite.tests.length) {
@@ -66,12 +67,13 @@ function saveOrder (suite) {
 }
 
 function clearSavedOrder () {
-  require('fs').unlinkSync(filename)
-  log('tests have passed, deleted the current random order', filename)
+  if (exists(filename)) {
+    require('fs').unlinkSync(filename)
+    log('tests have passed, deleted the current random order', filename)
+  }
 }
 
 function loadOrder () {
-  const exists = require('fs').existsSync
   if (!exists(filename)) {
     return
   }
