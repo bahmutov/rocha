@@ -1,5 +1,5 @@
 /* global describe, it */
-describe('example', function () {
+describe('tricky example', function () {
   var foo
   it('runs test 1', function () {
     foo = 42

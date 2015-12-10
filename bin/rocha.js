@@ -14,6 +14,6 @@ require('simple-bin-help')({
   help: help
 })
 
-const spec = process.argv[2]
+const spec = process.argv.slice(2)
 const rocha = require('..')
 rocha({ spec: spec })

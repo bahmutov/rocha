@@ -7,6 +7,7 @@
     "rocha": "bin/rocha.js"
   },
   "dependencies": {
+    "debug": "2.2.0",
     "lodash.shuffle": "3.1.0",
     "mocha": "2.3.4",
     "simple-bin-help": "1.5.0"

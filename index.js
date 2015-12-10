@@ -1,10 +1,11 @@
 const Mocha = require('mocha')
 const mocha = new Mocha()
 const shuffle = require('lodash.shuffle')
+const log = require('debug')('rocha')
 
 function shuffleTests (suite) {
   if (suite.tests.length) {
-    console.log('shuffling %d unit tests in "%s"',
+    log('shuffling %d unit tests in "%s"',
       suite.tests.length, suite.title)
     suite.tests = shuffle(suite.tests)
   }
@@ -14,13 +15,17 @@ function shuffleTests (suite) {
 function rocha (options) {
   options = options || {}
 
-  var specFilename = options.spec
-  if (!specFilename) {
+  var specFilenames = options.spec
+  if (!specFilenames) {
     console.error('Missing spec file pattern')
     process.exit(-1)
   }
 
-  mocha.addFile(specFilename)
+  if (typeof specFilenames === 'string') {
+    specFilenames = [specFilenames]
+  }
+
+  specFilenames.forEach(mocha.addFile.bind(mocha))
 
   mocha.suite.beforeAll(function () {
     shuffleTests(mocha.suite)

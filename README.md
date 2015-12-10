@@ -63,9 +63,9 @@ Not every random order will be
 - so random that it is different from sequential
 - enough to flush out every problem
 
-## How should we code?
+## How should we test?
 
-Each unit test should NOT depend on the order of other tests to run. In the above case,
+Each unit test should NOT depend on the order the other tests are running. In the above case,
 refactor the test to reset the variable before each unit test,
 see [spec/fixed.spec.js](spec/fixed.spec.js)
 
@@ -80,6 +80,13 @@ describe('fixed example', function () {
 ```
 
 Now each unit test starts from the same values (at least in this example).
+
+## Options
+
+**verbose log** - to see diagnostic messages as Rocha runs, set environment variable `DEBUG=rocha`
+when running.
+
+    DEBUG=rocha rocha <spec>
 
 ### Small print
 
