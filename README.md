@@ -14,7 +14,7 @@
 
 ## Example
 
-The tests in [spec/spec.js](spec/spec.js) always pass in Mocha,
+The tests in [spec/tricky-spec.js](spec/tricky-spec.js) always pass in Mocha,
 but only because their execution order is 1 - 2 - 3.
 
 ```js
@@ -31,9 +31,12 @@ describe('example', function () {
 })
 ```
 
+This tests pass under Mocha but this is very unreliable: a tiny code change
+can break the tests for no obvious reason. A pain to find the problem too.
+
 ### Running tests using Mocha
 
-    > mocha spec/spec.js
+    > mocha spec/tricky-spec.js
       example
     polluted the environment
         ✓ runs test 1
@@ -41,8 +44,9 @@ describe('example', function () {
         ✓ runs test 3
       3 passing (8ms)
 
-### Running tests using rocha
+### Running tests using Rocha
 
+    > rocha spec/tricky-spec.js
     shuffling 3 unit tests in "example"
       example
         1) runs test 3
@@ -58,6 +62,24 @@ Not every random order will be
 
 - so random that it is different from sequential
 - enough to flush out every problem
+
+## How should we code?
+
+Each unit test should NOT depend on the order of other tests to run. In the above case,
+refactor the test to reset the variable before each unit test,
+see [spec/fixed.spec.js](spec/fixed.spec.js)
+
+```js
+describe('fixed example', function () {
+  var foo
+  beforeEach(function () {
+    foo = undefined
+  })
+  ...
+});
+```
+
+Now each unit test starts from the same values (at least in this example).
 
 ### Small print
 
