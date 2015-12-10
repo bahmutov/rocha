@@ -2,6 +2,9 @@ const Mocha = require('mocha')
 const mocha = new Mocha()
 const _ = require('lodash')
 const log = require('debug')('rocha')
+const la = require('lazy-ass')
+const check = require('check-more-types')
+const chalk = require('chalk')
 
 function shuffleTests (suite) {
   if (suite.tests.length) {
@@ -26,10 +29,27 @@ function collectTestOrder (rootSuite) {
   return suites
 }
 
+function setTestOrder (suite, tests, titles) {
+  la(check.array(tests), 'invalid tests', tests)
+  la(check.array(titles), 'invalid titles', titles)
+  la(tests.length === titles.length, 'different cardinality',
+    tests, titles)
+  const orderedTests = []
+  titles.forEach(title => {
+    const test = _.find(tests, { title: title })
+    la(test, 'could not find test with title', title,
+      'among', tests, 'in', suite.fullTitle())
+    orderedTests.push(test)
+  })
+  suite.tests = orderedTests
+}
+
 function setOrder (suite, order) {
   const foundInfo = _.find(order, { title: suite.fullTitle() })
   if (foundInfo) {
     log('restoring order to', foundInfo.title)
+    // need to compare number of tests, etc
+    setTestOrder(suite, suite.tests, foundInfo.tests)
   }
   suite.suites.forEach(s => setOrder(s, order))
 }
@@ -43,6 +63,11 @@ function saveOrder (suite) {
   const save = require('fs').writeFileSync
   save(filename, json)
   log('saved order to file', filename)
+}
+
+function clearSavedOrder () {
+  require('fs').unlinkSync(filename)
+  log('tests have passed, deleted the current random order', filename)
 }
 
 function loadOrder () {
@@ -87,6 +112,12 @@ function rocha (options) {
 
   mocha.run(function (failures) {
     process.on('exit', function () {
+      if (failures === 0) {
+        clearSavedOrder()
+      } else {
+        console.error('Failed tests order saved in', chalk.yellow(filename))
+        console.error('If you run Rocha again, the same failed test order will be used')
+      }
       process.exit(failures)
     })
   })
