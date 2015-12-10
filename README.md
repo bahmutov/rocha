@@ -12,6 +12,15 @@
 [![manpm](https://img.shields.io/badge/manpm-%E2%9C%93-3399ff.svg)](https://github.com/bahmutov/manpm)
 [![standard style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
+## Install and use
+
+Should be just like [Mocha](https://mochajs.org/) for most cases
+
+    npm install -g rocha
+    rocha src/*-spec.js
+
+Open an [issue][issues] if things do not work as expected.
+
 ## Demo screencast
 
 [![asciicast](https://asciinema.org/a/31549.png)](https://asciinema.org/a/31549)
@@ -139,7 +148,9 @@ License: MIT - do anything with the code, but don't blame me if it does not work
 Spread the word: tweet, star on github, etc.
 
 Support: if you find any problems with this module, email / tweet /
-[open issue](https://github.com/bahmutov/rocha/issues) on Github
+[open issue][issues] on Github
+
+[issues]: https://github.com/bahmutov/rocha/issues
 
 ## MIT License
 
