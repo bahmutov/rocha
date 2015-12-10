@@ -32,6 +32,7 @@
     "type": "git",
     "url": "https://github.com/bahmutov/rocha.git"
   },
+  "preferGlobal": true,
   "keywords": [
     "mocha",
     "cli",
