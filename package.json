@@ -2,6 +2,7 @@
   "name": "rocha",
   "description": "Runs Mocha unit tests but randomizes their order",
   "main": "index.js",
+  "version": "0.0.0-semantic-release",
   "bin": {
     "rocha": "bin/rocha.js"
   },
@@ -10,13 +11,18 @@
     "mocha": "2.3.4",
     "simple-bin-help": "1.5.0"
   },
+  "files": [
+    "bin",
+    "index.js"
+  ],
   "scripts": {
     "random": "node index.js spec/spec.js",
     "mocha": "mocha spec/spec.js",
     "lint": "standard bin/*.js *.js spec/*.js",
     "commit": "commit-wizard",
     "issues": "git-issues",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";"
   },
   "repository": {
     "type": "git",
