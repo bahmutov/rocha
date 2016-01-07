@@ -22,7 +22,7 @@
   "scripts": {
     "test": "npm run mocha",
     "random": "node --harmony bin/rocha.js spec/tricky-spec.js",
-    "mocha": "mocha spec/*-spec.js",
+    "mocha": "mocha spec/**/*-spec.js spec/fixed-spec.js",
     "lint": "standard bin/*.js *.js spec/*.js",
     "commit": "commit-wizard",
     "issues": "git-issues",

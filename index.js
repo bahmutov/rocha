@@ -87,6 +87,9 @@ function loadOrder () {
 function rocha (options) {
   options = options || {}
 
+  log('starting rocha with options')
+  log(JSON.stringify(options, null, 2))
+
   var specFilenames = options.spec
   if (!specFilenames) {
     console.error('Missing spec file pattern')
