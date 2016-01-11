@@ -21,6 +21,10 @@ Should be just like [Mocha](https://mochajs.org/) for most cases
 
 Open an [issue][issues] if things do not work as expected.
 
+Because I used some pieces of ES6, and Ubuntu does not play nicely with `--harmony`
+flag (which allows [using some ES6 today](https://glebbahmutov.com/blog/using-node-es6-today/)) 
+this package requires Node >= 4.
+
 ## Demo screencast
 
 [![asciicast](https://asciinema.org/a/31549.png)](https://asciinema.org/a/31549)

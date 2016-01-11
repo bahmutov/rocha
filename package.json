@@ -6,6 +6,9 @@
   "bin": {
     "rocha": "bin/rocha.js"
   },
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "dependencies": {
     "chalk": "1.1.1",
     "check-more-types": "2.10.0",
@@ -21,7 +24,7 @@
   ],
   "scripts": {
     "test": "npm run mocha",
-    "random": "node --harmony bin/rocha.js spec/tricky-spec.js",
+    "random": "node bin/rocha.js spec/tricky-spec.js",
     "mocha": "mocha spec/**/*-spec.js spec/fixed-spec.js",
     "lint": "standard bin/*.js *.js spec/*.js",
     "commit": "commit-wizard",
