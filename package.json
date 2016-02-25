@@ -24,9 +24,10 @@
   ],
   "scripts": {
     "test": "npm run mocha",
+    "pretest": "npm run lint",
     "random": "node bin/rocha.js spec/tricky-spec.js",
     "mocha": "mocha spec/**/*-spec.js spec/fixed-spec.js",
-    "lint": "standard bin/*.js *.js spec/*.js",
+    "lint": "standard --verbose bin/*.js *.js spec/*.js",
     "commit": "commit-wizard",
     "issues": "git-issues",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
@@ -63,8 +64,7 @@
     "pre-git": {
       "commit-msg": "simple",
       "pre-commit": [
-        "npm run lint",
-        "npm run mocha"
+        "npm test"
       ],
       "pre-push": [
         "npm run size"
