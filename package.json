@@ -20,13 +20,15 @@
   },
   "files": [
     "bin",
-    "index.js"
+    "index.js",
+    "src/*.js",
+    "!src/*-spec.js"
   ],
   "scripts": {
     "test": "npm run mocha",
     "pretest": "npm run lint",
     "random": "node bin/rocha.js spec/tricky-spec.js",
-    "mocha": "mocha spec/**/*-spec.js spec/fixed-spec.js",
+    "mocha": "mocha src/*-spec.js spec/**/*-spec.js spec/fixed-spec.js",
     "lint": "standard --verbose bin/*.js *.js src/*.js spec/*.js",
     "commit": "commit-wizard",
     "issues": "git-issues",

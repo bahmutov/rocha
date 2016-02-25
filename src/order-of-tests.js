@@ -41,6 +41,7 @@ function setTestOrder (suite, tests, titles) {
   suite.tests = orderedTests
 }
 
+// recursively goes through the tree of suites
 function setOrder (suite, order) {
   const foundInfo = _.find(order, { title: suite.fullTitle() })
   if (foundInfo) {
