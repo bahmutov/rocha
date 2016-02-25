@@ -8,7 +8,8 @@ const rm = require('fs').unlinkSync
 const read = require('fs').readFileSync
 
 function saveOrder (ordered) {
-  la(is.object(ordered), 'expected a suite object', ordered)
+  la(is.array(ordered), 'expected a list of suites', ordered)
+
   const json = JSON.stringify(ordered, null, 2)
   const save = require('fs').writeFileSync
   save(filename, json)
@@ -26,7 +27,7 @@ function clearSavedOrder () {
 
 function loadOrder () {
   if (!exists(filename)) {
-    return filename
+    return
   }
   const json = read(filename)
   const order = JSON.parse(json)
