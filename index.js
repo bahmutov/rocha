@@ -5,7 +5,7 @@ const log = require('debug')('rocha')
 const la = require('lazy-ass')
 const is = require('check-more-types')
 const chalk = require('chalk')
-const cache = require('./src/test-order-cache')
+const cache = require('./src/order-cache')
 la(is.object(cache), 'missing test order object')
 
 function shuffleTests (suite) {
