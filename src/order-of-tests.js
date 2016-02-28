@@ -28,10 +28,10 @@ function collectTestOrder (rootSuite) {
 
 // reorders given tests according to the given list of titles
 // any titles not found will be ignored
+// tests without a title will be added at the end
 function setTestOrder (suite, tests, titles) {
   la(is.array(tests), 'invalid tests', tests)
   la(is.array(titles), 'invalid titles', titles)
-  // la(tests.length === titles.length, 'different cardinality', tests, titles)
 
   const orderedTests = []
   titles.forEach(title => {
@@ -44,7 +44,8 @@ function setTestOrder (suite, tests, titles) {
       'among', tests, 'in', suite.fullTitle())
     orderedTests.push(test)
   })
-  suite.tests = orderedTests
+  const newTests = _.difference(tests, orderedTests)
+  suite.tests = orderedTests.concat(newTests)
 }
 
 // recursively goes through the tree of suites

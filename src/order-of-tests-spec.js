@@ -54,6 +54,21 @@ describe('order of tests', function () {
     }]
     set(suite, order)
     la(_.isEqual(suite.tests, toTests('bar', 'foo')),
-      'did not change order', suite.tests)
+      'kept tests not in order', suite.tests)
+  })
+
+  it('adds new tests at the end of the list', () => {
+    const suite = {
+      fullTitle: () => 's1',
+      suites: [],
+      tests: toTests('foo', 'bar')
+    }
+    const order = [{
+      title: 's1',
+      tests: ['bar']
+    }]
+    set(suite, order)
+    la(_.isEqual(suite.tests, toTests('bar', 'foo')),
+      'added foo at the end', suite.tests)
   })
 })
