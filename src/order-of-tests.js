@@ -26,14 +26,20 @@ function collectTestOrder (rootSuite) {
   return suites
 }
 
+// reorders given tests according to the given list of titles
+// any titles not found will be ignored
 function setTestOrder (suite, tests, titles) {
   la(is.array(tests), 'invalid tests', tests)
   la(is.array(titles), 'invalid titles', titles)
-  la(tests.length === titles.length, 'different cardinality', tests, titles)
+  // la(tests.length === titles.length, 'different cardinality', tests, titles)
 
   const orderedTests = []
   titles.forEach(title => {
     const test = _.find(tests, { title: title })
+    if (!test) {
+      log('cannot find test under title', title, 'skipping')
+      return
+    }
     la(test, 'could not find test with title', title,
       'among', tests, 'in', suite.fullTitle())
     orderedTests.push(test)

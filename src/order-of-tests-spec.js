@@ -41,4 +41,19 @@ describe('order of tests', function () {
     la(_.isEqual(suite.tests, toTests('bar', 'foo')),
       'did not change order', suite.tests)
   })
+
+  it('ignores titles that are not found', () => {
+    const suite = {
+      fullTitle: () => 's1',
+      suites: [],
+      tests: toTests('foo', 'bar')
+    }
+    const order = [{
+      title: 's1',
+      tests: ['bar', 'foo', 'baz']
+    }]
+    set(suite, order)
+    la(_.isEqual(suite.tests, toTests('bar', 'foo')),
+      'did not change order', suite.tests)
+  })
 })
