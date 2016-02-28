@@ -30,15 +30,17 @@ function rocha (options) {
   mocha.suite.beforeAll(function () {
     const cachedOrder = cache.load()
     if (cachedOrder) {
-      // how to make sure we ran with
-      // the same set of test files?
       log('reordering specs like last time')
       order.set(mocha.suite, cachedOrder)
     } else {
       order.shuffle(mocha.suite)
-      const testNames = order.collect(mocha.suite)
-      cache.save(testNames)
     }
+
+    // the order might be out of date if any tests
+    // were added or deleted, thus
+    // always collect the order
+    const testNames = order.collect(mocha.suite)
+    cache.save(testNames)
   })
 
   mocha.run(function (failures) {
