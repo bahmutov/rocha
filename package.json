@@ -27,7 +27,7 @@
   "scripts": {
     "test": "npm run mocha",
     "pretest": "npm run lint",
-    "random": "node bin/rocha.js spec/tricky-spec.js",
+    "random": "node bin/rocha.js spec/tricky-spec.js spec/tricky-describe-spec.js",
     "mocha": "mocha src/*-spec.js spec/**/*-spec.js spec/fixed-spec.js",
     "lint": "standard --verbose bin/*.js *.js src/*.js spec/*.js",
     "commit": "commit-wizard",
