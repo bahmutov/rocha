@@ -3,6 +3,16 @@ const la = require('lazy-ass')
 const is = require('check-more-types')
 const _ = require('lodash')
 
+function shuffleDescribes (suite) {
+  if (suite.suites && suite.suites.length) {
+    log('shuffling %d describe blocks in "%s"',
+      suite.suites.length, suite.title)
+    suite.suites = _.shuffle(suite.suites)
+    shuffleTests(suite)
+    suite.suites.forEach(shuffleDescribes)
+  }
+}
+
 function shuffleTests (suite) {
   if (suite.tests.length) {
     log('shuffling %d unit tests in "%s"',
@@ -60,7 +70,7 @@ function setOrder (suite, order) {
 }
 
 module.exports = {
-  shuffle: shuffleTests,
+  shuffle: shuffleDescribes,
   set: setOrder,
   collect: collectTestOrder
 }
