@@ -3,14 +3,19 @@ const la = require('lazy-ass')
 const is = require('check-more-types')
 const _ = require('lodash')
 
+function hasSuites (suite) {
+  return suite && suite.suites && suite.suites.length
+}
+
 function shuffleDescribes (suite) {
-  if (suite.suites && suite.suites.length) {
-    log('shuffling %d describe blocks in "%s"',
-      suite.suites.length, suite.title)
-    suite.suites = _.shuffle(suite.suites)
-    shuffleTests(suite)
-    suite.suites.forEach(shuffleDescribes)
+  if (!hasSuites(suite)) {
+    return
   }
+  log('shuffling %d describe blocks in "%s"',
+    suite.suites.length, suite.title)
+  suite.suites = _.shuffle(suite.suites)
+  shuffleTests(suite)
+  suite.suites.forEach(shuffleDescribes)
 }
 
 function shuffleTests (suite) {
