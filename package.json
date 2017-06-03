@@ -15,7 +15,7 @@
     "debug": "2.6.8",
     "lazy-ass": "1.6.0",
     "lodash": "3.10.1",
-    "mocha": "2.3.4",
+    "mocha": "3.4.2",
     "simple-bin-help": "1.5.1"
   },
   "files": [
