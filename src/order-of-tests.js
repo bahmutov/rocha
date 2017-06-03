@@ -2,11 +2,28 @@ const log = require('debug')('rocha')
 const la = require('lazy-ass')
 const is = require('check-more-types')
 const _ = require('lodash')
+const M = require('ramda-fantasy').Maybe
+const {Just, Nothing} = M
 
 function hasSuites (suite) {
   return suite && suite.suites && suite.suites.length
+    ? Just(suite) : Nothing()
 }
 
+function shuffleDescribes (suite) {
+  hasSuites(suite)
+    .map(s => {
+      log('shuffling %d describe blocks in "%s"',
+        s.suites.length, s.title)
+      s.suites = _.shuffle(s.suites)
+      shuffleTests(s)
+      s.suites.forEach(shuffleDescribes)
+      return s
+    })
+    .getOrElse()
+}
+
+/*
 function shuffleDescribes (suite) {
   if (!hasSuites(suite)) {
     return
@@ -17,6 +34,7 @@ function shuffleDescribes (suite) {
   shuffleTests(suite)
   suite.suites.forEach(shuffleDescribes)
 }
+*/
 
 function shuffleTests (suite) {
   if (suite.tests.length) {

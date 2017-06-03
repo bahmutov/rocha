@@ -1,10 +1,31 @@
 const la = require('lazy-ass')
 const is = require('check-more-types')
 const _ = require('lodash')
+const {set, shuffle} = require('./order-of-tests')
 
 /* global describe, it */
+describe('shuffle', () => {
+  it('is a function', () => {
+    la(is.fn(shuffle), shuffle)
+  })
+
+  it('does not shuffle undefined', () => {
+    la(_.isUndefined(shuffle()))
+  })
+
+  it('does not shuffle empty', () => {
+    la(_.isUndefined(shuffle({})))
+  })
+
+  it('does not shuffle empty suites', () => {
+    const s = {
+      suites: []
+    }
+    la(_.isUndefined(shuffle(s)))
+  })
+})
+
 describe('order of tests', function () {
-  const set = require('./order-of-tests').set
   function toTest (name) {
     return { title: name }
   }
