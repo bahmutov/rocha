@@ -5,8 +5,6 @@
 [![NPM][rocha-icon] ][rocha-url]
 
 [![Build status][rocha-ci-image] ][rocha-ci-url]
-[![dependencies][rocha-dependencies-image] ][rocha-dependencies-url]
-[![devdependencies][rocha-devdependencies-image] ][rocha-devdependencies-url]
 
 [![semantic-release][semantic-image] ][semantic-url]
 [![manpm](https://img.shields.io/badge/manpm-%E2%9C%93-3399ff.svg)](https://github.com/bahmutov/manpm)
@@ -22,7 +20,7 @@ Should be just like [Mocha](https://mochajs.org/) for most cases
 Open an [issue][issues] if things do not work as expected.
 
 Because I used some pieces of ES6, and Ubuntu does not play nicely with `--harmony`
-flag (which allows [using some ES6 today](https://glebbahmutov.com/blog/using-node-es6-today/)) 
+flag (which allows [using some ES6 today](https://glebbahmutov.com/blog/using-node-es6-today/))
 this package requires Node >= 4.
 
 ## Demo screencast
@@ -144,8 +142,8 @@ when running.
 Author: Gleb Bahmutov &copy; 2015
 
 * [@bahmutov](https://twitter.com/bahmutov)
-* [glebbahmutov.com](http://glebbahmutov.com)
-* [blog](http://glebbahmutov.com/blog/)
+* [glebbahmutov.com](https://glebbahmutov.com)
+* [blog](https://glebbahmutov.com/blog/)
 
 License: MIT - do anything with the code, but don't blame me if it does not work.
 
@@ -181,13 +179,9 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-[rocha-icon]: https://nodei.co/npm/rocha.png?downloads=true
+[rocha-icon]: https://nodei.co/npm/rocha.svg?downloads=true
 [rocha-url]: https://npmjs.org/package/rocha
-[rocha-ci-image]: https://travis-ci.org/bahmutov/rocha.png?branch=master
+[rocha-ci-image]: https://travis-ci.org/bahmutov/rocha.svg?branch=master
 [rocha-ci-url]: https://travis-ci.org/bahmutov/rocha
-[rocha-dependencies-image]: https://david-dm.org/bahmutov/rocha.png
-[rocha-dependencies-url]: https://david-dm.org/bahmutov/rocha
-[rocha-devdependencies-image]: https://david-dm.org/bahmutov/rocha/dev-status.png
-[rocha-devdependencies-url]: https://david-dm.org/bahmutov/rocha#info=devDependencies
 [semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-url]: https://github.com/semantic-release/semantic-release
