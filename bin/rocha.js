@@ -2,6 +2,8 @@
 
 'use strict'
 
+const join = require('path').join
+
 const help = [
   'USE: rocha <spec file pattern>',
   '     rocha *-spec.js',
@@ -10,7 +12,7 @@ const help = [
 
 require('simple-bin-help')({
   minArguments: 3,
-  packagePath: __dirname + '/../package.json',
+  packagePath: join(__dirname, '..', 'package.json'),
   help: help
 })
 
