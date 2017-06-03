@@ -5,7 +5,6 @@
 [![NPM][rocha-icon] ][rocha-url]
 
 [![Build status][rocha-ci-image] ][rocha-ci-url]
-
 [![semantic-release][semantic-image] ][semantic-url]
 [![manpm](https://img.shields.io/badge/manpm-%E2%9C%93-3399ff.svg)](https://github.com/bahmutov/manpm)
 [![standard style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
