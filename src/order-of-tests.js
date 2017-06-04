@@ -4,15 +4,18 @@ const is = require('check-more-types')
 const _ = require('lodash')
 const M = require('ramda-fantasy').Maybe
 const {Just, Nothing} = M
-const {has, pathSatisfies, lt, tap} = require('ramda')
+const R = require('ramda')
+const {has, pathSatisfies, lt, tap, allPass} = R
 
 const positive = lt(0)
 
 function hasSuites (suite) {
-  return suite &&
-    has('suites', suite) &&
-    pathSatisfies(positive, ['suites', 'length'], suite)
-    ? Just(suite) : Nothing()
+  const isValidSuite = allPass([
+    R.is(Object),
+    has('suites'),
+    pathSatisfies(positive, ['suites', 'length'])
+  ])
+  return isValidSuite(suite) ? Just(suite) : Nothing()
 }
 
 const logShuffle = (s) =>
@@ -51,12 +54,14 @@ function shuffleDescribes (suite) {
 */
 
 function shuffleTests (suite) {
-  if (suite.tests.length) {
+  if (Array.isArray(suite) && suite.tests.length) {
     log('shuffling %d unit tests in "%s"',
       suite.tests.length, suite.title)
     suite.tests = _.shuffle(suite.tests)
   }
-  suite.suites.forEach(shuffleTests)
+  if (Array.isArray(suite.suites)) {
+    suite.suites.forEach(shuffleTests)
+  }
   return suite
 }
 
