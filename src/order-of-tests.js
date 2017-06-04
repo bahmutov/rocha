@@ -8,13 +8,15 @@ const R = require('ramda')
 const {has, pathSatisfies, lt, tap, allPass} = R
 
 const positive = lt(0)
+const isObject = R.is(Object)
+
+const isValidSuite = allPass([
+  isObject,
+  has('suites'),
+  pathSatisfies(positive, ['suites', 'length'])
+])
 
 function hasSuites (suite) {
-  const isValidSuite = allPass([
-    R.is(Object),
-    has('suites'),
-    pathSatisfies(positive, ['suites', 'length'])
-  ])
   return isValidSuite(suite) ? Just(suite) : Nothing()
 }
 
