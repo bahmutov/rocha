@@ -24,10 +24,8 @@ const logShuffle = (s) =>
   log('shuffling %d describe blocks in "%s"',
     s.suites.length, s.title)
 
-const shuffleSuites = (s) => {
-  s.suites = _.shuffle(s.suites)
-  return s
-}
+const suitesLens = R.lensProp('suites')
+const shuffleSuites = R.over(suitesLens, _.shuffle)
 
 function shuffleNestedSuites (s) {
   s.suites.forEach(shuffleDescribes)

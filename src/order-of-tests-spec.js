@@ -26,13 +26,22 @@ describe('shuffle', () => {
     la(snapshot(shuffle(s)))
   })
 
+  it('returns different object', () => {
+    const s = {
+      suites: [1, 2, 3]
+    }
+    const shuffled = shuffle(s)
+    la(shuffled !== s, 'returns new object')
+  })
+
   it('returns shuffled suites', () => {
     const s = {
       suites: R.range(1, 100)
     }
     const shuffled = shuffle(s)
-    la(_.isEqual(shuffled.suites, s.suites),
-      'shuffled suites are the same', shuffled.suites)
+    la(!_.isEqual(shuffled.suites, s.suites),
+      'shuffled suites are the same',
+      shuffled.suites, 'initial', s.suites)
   })
 })
 
