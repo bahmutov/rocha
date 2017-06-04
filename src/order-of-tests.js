@@ -29,17 +29,9 @@ const shuffleSuites = (s) => {
   return s
 }
 
-function shuffleDescribes (suite) {
-  return hasSuites(suite)
-    .map(tap(logShuffle))
-    .map(shuffleSuites)
-    .map(shuffleTests)
-    .map(s => {
-      // recursive step
-      s.suites.forEach(shuffleDescribes)
-      return s
-    })
-    .getOrElse(suite)
+function shuffleNestedSuites (s) {
+  s.suites.forEach(shuffleDescribes)
+  return s
 }
 
 function shuffleTests (suite) {
@@ -52,6 +44,15 @@ function shuffleTests (suite) {
     suite.suites.forEach(shuffleTests)
   }
   return suite
+}
+
+function shuffleDescribes (suite) {
+  return hasSuites(suite)
+    .map(tap(logShuffle))
+    .map(shuffleSuites)
+    .map(shuffleTests)
+    .map(shuffleNestedSuites)
+    .getOrElse(suite)
 }
 
 function collectSuite (suite, collected) {

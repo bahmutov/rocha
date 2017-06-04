@@ -6,7 +6,7 @@ const snapshot = require('snap-shot')
 const R = require('ramda')
 
 /* global describe, it */
-describe.only('shuffle', () => {
+describe('shuffle', () => {
   it('is a function', () => {
     la(is.fn(shuffle), shuffle)
   })
