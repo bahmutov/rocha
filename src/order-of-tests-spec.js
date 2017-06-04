@@ -31,7 +31,7 @@ describe.only('shuffle', () => {
       suites: R.range(1, 100)
     }
     const shuffled = shuffle(s)
-    la(!R.equals(shuffled.suites, s.suites),
+    la(_.isEqual(shuffled.suites, s.suites),
       'shuffled suites are the same', shuffled.suites)
   })
 })

@@ -40,19 +40,6 @@ function shuffleDescribes (suite) {
     .getOrElse(suite)
 }
 
-/*
-function shuffleDescribes (suite) {
-  if (!hasSuites(suite)) {
-    return
-  }
-  log('shuffling %d describe blocks in "%s"',
-    suite.suites.length, suite.title)
-  suite.suites = _.shuffle(suite.suites)
-  shuffleTests(suite)
-  suite.suites.forEach(shuffleDescribes)
-}
-*/
-
 function shuffleTests (suite) {
   if (Array.isArray(suite) && suite.tests.length) {
     log('shuffling %d unit tests in "%s"',
