@@ -1,0 +1,6 @@
+exports['does not shuffle empty 1'] = {}
+
+exports['does not shuffle empty suites 1'] = {
+  "suites": []
+}
+

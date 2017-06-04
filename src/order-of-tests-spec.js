@@ -2,9 +2,10 @@ const la = require('lazy-ass')
 const is = require('check-more-types')
 const _ = require('lodash')
 const {set, shuffle} = require('./order-of-tests')
+const snapshot = require('snap-shot')
 
 /* global describe, it */
-describe('shuffle', () => {
+describe.only('shuffle', () => {
   it('is a function', () => {
     la(is.fn(shuffle), shuffle)
   })
@@ -14,14 +15,18 @@ describe('shuffle', () => {
   })
 
   it('does not shuffle empty', () => {
-    la(_.isUndefined(shuffle({})))
+    la(snapshot(shuffle({})))
   })
 
   it('does not shuffle empty suites', () => {
     const s = {
       suites: []
     }
-    la(_.isUndefined(shuffle(s)))
+    la(snapshot(shuffle(s)))
+  })
+
+  it('returns shuffled suites', () => {
+
   })
 })
 

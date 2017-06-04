@@ -4,23 +4,37 @@ const is = require('check-more-types')
 const _ = require('lodash')
 const M = require('ramda-fantasy').Maybe
 const {Just, Nothing} = M
+const {has, pathSatisfies, lt, tap} = require('ramda')
+
+const positive = lt(0)
 
 function hasSuites (suite) {
-  return suite && suite.suites && suite.suites.length
+  return suite &&
+    has('suites', suite) &&
+    pathSatisfies(positive, ['suites', 'length'], suite)
     ? Just(suite) : Nothing()
 }
 
+const logShuffle = (s) =>
+  log('shuffling %d describe blocks in "%s"',
+    s.suites.length, s.title)
+
+const shuffleSuites = (s) => {
+  s.suites = _.shuffle(s.suites)
+  return s
+}
+
 function shuffleDescribes (suite) {
-  hasSuites(suite)
+  return hasSuites(suite)
+    .map(tap(logShuffle))
+    .map(shuffleSuites)
+    .map(shuffleTests)
     .map(s => {
-      log('shuffling %d describe blocks in "%s"',
-        s.suites.length, s.title)
-      s.suites = _.shuffle(s.suites)
-      shuffleTests(s)
+      // recursive step
       s.suites.forEach(shuffleDescribes)
       return s
     })
-    .getOrElse()
+    .getOrElse(suite)
 }
 
 /*
@@ -43,6 +57,7 @@ function shuffleTests (suite) {
     suite.tests = _.shuffle(suite.tests)
   }
   suite.suites.forEach(shuffleTests)
+  return suite
 }
 
 function collectSuite (suite, collected) {
