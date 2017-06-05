@@ -2,8 +2,7 @@ const log = require('debug')('rocha')
 const la = require('lazy-ass')
 const is = require('check-more-types')
 const _ = require('lodash')
-const M = require('ramda-fantasy').Maybe
-const {Just, Nothing} = M
+const {Just, Nothing} = require('ramda-fantasy').Maybe
 const R = require('ramda')
 const {has, pathSatisfies, lt, tap, allPass} = R
 
@@ -16,7 +15,7 @@ const isValidSuite = allPass([
   pathSatisfies(positive, ['suites', 'length'])
 ])
 
-function hasSuites (suite) {
+function maybeSuites (suite) {
   return isValidSuite(suite) ? Just(suite) : Nothing()
 }
 
@@ -41,7 +40,7 @@ function shuffleTests (suite) {
 }
 
 function shuffleDescribes (suite) {
-  return hasSuites(suite)
+  return maybeSuites(suite)
     .map(tap(logShuffle))
     .map(shuffleSuites)
     .map(shuffleTests)
