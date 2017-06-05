@@ -43,6 +43,51 @@ describe('shuffle', () => {
       'shuffled suites are the same',
       shuffled.suites, 'initial', s.suites)
   })
+
+  it('shuffles top level names', () => {
+    const s1 = {
+      name: 's1',
+      suites: R.range(1, 10)
+    }
+    const s2 = {
+      name: 's2',
+      suites: R.range(20, 30)
+    }
+    const s3 = {
+      name: 's3',
+      suites: R.range(40, 50)
+    }
+    const s = {
+      suites: [s1, s2, s3]
+    }
+    const names = ['s1', 's2', 's3']
+    const shuffled = shuffle(s)
+    const shuffledNsames = R.pickAll('name')(shuffled)
+    la(!_.isEqual(names, shuffledNsames),
+      'suites should be shuffled', shuffledNsames)
+  })
+
+  it('shuffles nested suites', () => {
+    const s1 = {
+      name: 's1',
+      suites: R.range(1, 10)
+    }
+    const s2 = {
+      name: 's2',
+      suites: R.range(20, 30)
+    }
+    const s3 = {
+      name: 's3',
+      suites: R.range(40, 50)
+    }
+    const s = {
+      suites: [s1, s2, s3]
+    }
+    const shuffled = shuffle(s)
+    const shuffledS1 = R.find(R.propEq('name', 's1'))(shuffled.suites)
+    la(!_.isEqual(shuffledS1.suites, s1.suites),
+      'did not shuffle s1', shuffledS1.suites)
+  })
 })
 
 describe('order of tests', function () {

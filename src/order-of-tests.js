@@ -26,11 +26,7 @@ const logShuffle = (s) =>
 
 const suitesLens = R.lensProp('suites')
 const shuffleSuites = R.over(suitesLens, _.shuffle)
-
-function shuffleNestedSuites (s) {
-  s.suites.forEach(shuffleDescribes)
-  return s
-}
+const shuffleNestedSuites = R.over(suitesLens, R.map(shuffleDescribes))
 
 function shuffleTests (suite) {
   if (Array.isArray(suite) && suite.tests.length) {
