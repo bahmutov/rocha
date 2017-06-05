@@ -33,7 +33,8 @@ function rocha (options) {
       log('reordering specs like last time')
       order.set(mocha.suite, cachedOrder)
     } else {
-      order.shuffle(mocha.suite)
+      const randomOrder = order.shuffle(mocha.suite)
+      console.log('shuffled order\n%j', randomOrder)
     }
 
     // the order might be out of date if any tests
