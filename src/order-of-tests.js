@@ -32,7 +32,12 @@ function shuffleTests (suite) {
   if (suite && Array.isArray(suite.tests) && suite.tests.length) {
     log('shuffling %d unit tests in "%s"',
       suite.tests.length, suite.title)
-    suite.tests = _.shuffle(suite.tests)
+    const shuffled = _.shuffle(suite.tests)
+    if (R.equals(shuffled, suite.tests)) {
+      log('need to shuffle %d tests again in %s',
+        suite.tests.length, suite.title)
+    }
+    suite.tests = shuffled
   }
   if (Array.isArray(suite.suites)) {
     suite.suites.forEach(shuffleTests)
