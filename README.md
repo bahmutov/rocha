@@ -136,6 +136,8 @@ when running.
 
     DEBUG=rocha rocha <spec>
 
+During end to end tests, verbose logging is enabled using `DEBUG=rocha:e2e`
+
 ### Small print
 
 Author: Gleb Bahmutov &copy; 2015

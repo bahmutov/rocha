@@ -2,7 +2,8 @@ const log = require('debug')('rocha')
 const la = require('lazy-ass')
 const is = require('check-more-types')
 const _ = require('lodash')
-const {Just, Nothing} = require('ramda-fantasy').Maybe
+const {Maybe} = require('ramda-fantasy')
+const {Just, Nothing} = Maybe
 const R = require('ramda')
 const {has, pathSatisfies, lt, tap, allPass} = R
 
@@ -28,7 +29,7 @@ const shuffleSuites = R.over(suitesLens, _.shuffle)
 const shuffleNestedSuites = R.over(suitesLens, R.map(shuffleDescribes))
 
 function shuffleTests (suite) {
-  if (Array.isArray(suite) && suite.tests.length) {
+  if (suite && Array.isArray(suite.tests) && suite.tests.length) {
     log('shuffling %d unit tests in "%s"',
       suite.tests.length, suite.title)
     suite.tests = _.shuffle(suite.tests)
@@ -43,8 +44,14 @@ function shuffleDescribes (suite) {
   return maybeSuites(suite)
     .map(tap(logShuffle))
     .map(shuffleSuites)
-    .map(shuffleTests)
     .map(shuffleNestedSuites)
+    .getOrElse(suite)
+}
+
+function shuffle (suite) {
+  return Maybe.toMaybe(suite)
+    .map(shuffleDescribes)
+    .map(shuffleTests)
     .getOrElse(suite)
 }
 
@@ -96,7 +103,7 @@ function setOrder (suite, order) {
 }
 
 module.exports = {
-  shuffle: shuffleDescribes,
+  shuffle,
   set: setOrder,
   collect: collectTestOrder
 }

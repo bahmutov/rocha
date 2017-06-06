@@ -1,6 +1,8 @@
 const Mocha = require('mocha')
 const mocha = new Mocha()
 const log = require('debug')('rocha')
+// verbose output during e2e tests
+const e2e = require('debug')('rocha:e2e')
 const la = require('lazy-ass')
 const is = require('check-more-types')
 const chalk = require('chalk')
@@ -34,7 +36,9 @@ function rocha (options) {
       order.set(mocha.suite, cachedOrder)
     } else {
       const randomOrder = order.shuffle(mocha.suite)
-      console.log('shuffled order\n%j', randomOrder)
+      const names = order.collect(randomOrder)
+      e2e('shuffled names:')
+      e2e('%j', names)
     }
 
     // the order might be out of date if any tests
