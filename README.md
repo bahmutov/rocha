@@ -9,6 +9,10 @@
 [![manpm](https://img.shields.io/badge/manpm-%E2%9C%93-3399ff.svg)](https://github.com/bahmutov/manpm)
 [![standard style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
+**E2E tests**
+
+`rocha-test` - [![Build Status](https://travis-ci.org/bahmutov/rocha-test.svg?branch=master)](https://travis-ci.org/bahmutov/rocha-test)
+
 ## Install and use
 
 Should be just like [Mocha](https://mochajs.org/) for most cases

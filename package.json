@@ -77,5 +77,13 @@
       "post-commit": [],
       "post-merge": []
     }
+  },
+  "release": {
+    "verifyRelease": {
+      "path": "dont-crack",
+      "test-against": [
+        "https://github.com/bahmutov/rocha-test"
+      ]
+    }
   }
 }
