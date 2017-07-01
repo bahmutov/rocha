@@ -10,6 +10,7 @@ node_js:
 before_script:
   - npm prune
 script:
+  - ./next-update-travis.sh
   - npm run lint
   - npm run mocha
 after_success:
