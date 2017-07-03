@@ -1,5 +1,4 @@
 const Mocha = require('mocha')
-const mocha = new Mocha()
 const log = require('debug')('rocha')
 // verbose output during e2e tests
 const e2e = require('debug')('rocha:e2e')
@@ -13,6 +12,8 @@ la(is.object(cache), 'missing test order object')
 
 function rocha (options) {
   options = options || {}
+
+  const mocha = options.mocha || new Mocha()
 
   log('starting rocha with options')
   log(JSON.stringify(options, null, 2))
