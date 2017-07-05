@@ -63,6 +63,7 @@
     "next-update-travis": "1.0.0",
     "pre-git": "3.15.0",
     "semantic-release": "^6.3.6",
+    "semantic-release-github-notifier": "github:bahmutov/semantic-release-github-notifier",
     "snap-shot": "2.17.0",
     "standard": "10.0.2"
   },
@@ -77,6 +78,7 @@
       ],
       "post-commit": [],
       "post-merge": []
-    }
+    },
+    "release": {}
   }
 }
