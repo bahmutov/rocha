@@ -34,7 +34,7 @@
     "lint": "standard --verbose --fix bin/*.js *.js src/*.js spec/*.js",
     "commit": "commit-wizard",
     "issues": "git-issues",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "semantic-release": "semantic-release",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";"
   },
   "repository": {
