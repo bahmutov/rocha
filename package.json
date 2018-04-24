@@ -14,7 +14,7 @@
     "check-more-types": "2.24.0",
     "debug": "3.1.0",
     "lazy-ass": "1.6.0",
-    "lodash": "4.17.5",
+    "lodash": "4.17.10",
     "mocha": "5.1.1",
     "ramda": "0.25.0",
     "ramda-fantasy": "0.8.0",
