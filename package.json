@@ -18,7 +18,7 @@
     "mocha": "5.2.0",
     "ramda": "0.25.0",
     "ramda-fantasy": "0.8.0",
-    "simple-bin-help": "1.7.0"
+    "simple-bin-help": "1.7.1"
   },
   "files": [
     "bin",
