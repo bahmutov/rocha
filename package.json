@@ -64,7 +64,7 @@
     "semantic-release": "15.9.12",
     "simple-commit-message": "4.0.3",
     "snap-shot": "2.17.0",
-    "standard": "11.0.1"
+    "standard": "12.0.1"
   },
   "config": {
     "pre-git": {
