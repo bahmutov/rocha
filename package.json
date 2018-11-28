@@ -16,7 +16,7 @@
     "lazy-ass": "1.6.0",
     "lodash": "4.17.11",
     "mocha": "5.2.0",
-    "ramda": "0.26.0",
+    "ramda": "0.26.1",
     "ramda-fantasy": "0.8.0",
     "simple-bin-help": "1.7.1"
   },
