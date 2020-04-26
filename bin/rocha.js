@@ -13,11 +13,11 @@ const help = [
 require('simple-bin-help')({
   minArguments: 3,
   packagePath: join(__dirname, '..', 'package.json'),
-  help: help
+  help
 })
 
 // console.log(process.argv)
 
 const spec = process.argv.slice(2)
 const rocha = require('..')
-rocha({ spec: spec })
+rocha({ spec })

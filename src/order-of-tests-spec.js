@@ -1,7 +1,7 @@
 const la = require('lazy-ass')
 const is = require('check-more-types')
 const _ = require('lodash')
-const {set, shuffle} = require('./order-of-tests')
+const { set, shuffle } = require('./order-of-tests')
 const snapshot = require('snap-shot')
 const R = require('ramda')
 
