@@ -2,10 +2,10 @@ const log = require('debug')('rocha')
 const la = require('lazy-ass')
 const is = require('check-more-types')
 const _ = require('lodash')
-const {Maybe} = require('ramda-fantasy')
-const {Just, Nothing} = Maybe
+const { Maybe } = require('ramda-fantasy')
+const { Just, Nothing } = Maybe
 const R = require('ramda')
-const {has, pathSatisfies, lt, tap, allPass} = R
+const { has, pathSatisfies, lt, tap, allPass } = R
 
 const positive = lt(0)
 const isObject = R.is(Object)
@@ -83,7 +83,7 @@ function setTestOrder (suite, tests, titles) {
 
   const orderedTests = []
   titles.forEach(title => {
-    const test = _.find(tests, { title: title })
+    const test = _.find(tests, { title })
     if (!test) {
       log('cannot find test under title', title, 'skipping')
       return
